@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it as below.
+title: SHiP Data Model
+version: 0.1.0
+date-released: "2026-04-08"
+url: https://github.com/ShipSoft/data-model
+repository-code: https://github.com/ShipSoft/data-model
+type: software
+license: LGPL-3.0-or-later
+authors:
+  - name: The SHiP Collaboration
+abstract: Event data model for the SHiP experiment, providing MC, simulation and reconstruction data classes with ROOT dictionary support.
+keywords:
+  - physics
+  - particle-physics
+  - SHiP
+  - event-data-model

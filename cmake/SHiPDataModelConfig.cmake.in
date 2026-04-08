@@ -1,0 +1,8 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+find_dependency(ROOT COMPONENTS Core RIO)
+
+include("${CMAKE_CURRENT_LIST_DIR}/SHiPDataModelTargets.cmake")
+
+check_required_components(SHiPDataModel)
