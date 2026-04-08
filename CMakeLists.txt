@@ -7,28 +7,23 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(ROOT REQUIRED COMPONENTS Core RIO)
 
-add_library(
-  SHiPDataModel SHARED
-)
+add_library(SHiPDataModel SHARED)
 target_sources(
-  SHiPDataModel
-  PUBLIC
-    FILE_SET
-    headers
-    TYPE
-    HEADERS
-    BASE_DIRS
-    include
-    FILES
-    include/SHiP/MCParticle.hpp
-    include/SHiP/SimHit.hpp
-    include/SHiP/SimParticle.hpp
-    include/SHiP/SimResult.hpp
+    SHiPDataModel
+    PUBLIC
+        FILE_SET headers
+        TYPE HEADERS
+        BASE_DIRS include
+        FILES
+            include/SHiP/MCParticle.hpp
+            include/SHiP/SimHit.hpp
+            include/SHiP/SimParticle.hpp
+            include/SHiP/SimResult.hpp
 )
 target_link_libraries(SHiPDataModel PUBLIC ROOT::Core)
 set_target_properties(SHiPDataModel PROPERTIES LINKER_LANGUAGE CXX)
 
-ROOT_GENERATE_DICTIONARY(
+root_generate_dictionary(
   G__SHiPDataModel
   SHiP/MCParticle.hpp
   SHiP/SimHit.hpp
@@ -43,35 +38,37 @@ ROOT_GENERATE_DICTIONARY(
 include(GNUInstallDirs)
 
 install(
-  TARGETS SHiPDataModel
-  EXPORT SHiPDataModelTargets
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  FILE_SET headers
+    TARGETS SHiPDataModel
+    EXPORT SHiPDataModelTargets
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    FILE_SET headers
 )
 install(
-  FILES ${CMAKE_CURRENT_BINARY_DIR}/libSHiPDataModel_rdict.pcm
+    FILES
+        ${CMAKE_CURRENT_BINARY_DIR}/libSHiPDataModel_rdict.pcm
         ${CMAKE_CURRENT_BINARY_DIR}/libSHiPDataModel.rootmap
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 install(
-  EXPORT SHiPDataModelTargets
-  FILE SHiPDataModelTargets.cmake
-  NAMESPACE SHiP::
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SHiPDataModel
+    EXPORT SHiPDataModelTargets
+    FILE SHiPDataModelTargets.cmake
+    NAMESPACE SHiP::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SHiPDataModel
 )
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
-  cmake/SHiPDataModelConfig.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/SHiPDataModelConfig.cmake
-  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SHiPDataModel
+    cmake/SHiPDataModelConfig.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/SHiPDataModelConfig.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SHiPDataModel
 )
 write_basic_package_version_file(
-  ${CMAKE_CURRENT_BINARY_DIR}/SHiPDataModelConfigVersion.cmake
-  COMPATIBILITY AnyNewerVersion
+    ${CMAKE_CURRENT_BINARY_DIR}/SHiPDataModelConfigVersion.cmake
+    COMPATIBILITY AnyNewerVersion
 )
 install(
-  FILES ${CMAKE_CURRENT_BINARY_DIR}/SHiPDataModelConfig.cmake
+    FILES
+        ${CMAKE_CURRENT_BINARY_DIR}/SHiPDataModelConfig.cmake
         ${CMAKE_CURRENT_BINARY_DIR}/SHiPDataModelConfigVersion.cmake
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SHiPDataModel
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SHiPDataModel
 )
