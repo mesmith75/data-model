@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.0] - 2026-07-16
+
+### Features
+
+- *(doxygen)* Add API documentation via Doxygen and GitHub Pages
+- *(lint)* Enforce conventional commits with commitizen
+- Enable consumption as a pixi source dependency
+- Add canonical unit vocabulary via mp-units
+
+### Refactor
+
+- Drop redundant CMAKE_CXX_STANDARD from pixi build args
+
+### Documentation
+
+- List RecParticle in README data classes table
+- Link Doxygen API reference from README
+- Add CONTRIBUTING with prek hook setup
+- Align SPDX guidance with aggregate REUSE metadata
+
+### Styling
+
+- Reorder RecParticle.hpp includes to satisfy cpplint
+- Reformat CMakeLists.txt with gersemi 0.27.7
+
+### Testing
+
+- Add TTree and RNTuple round-trip tests
+- Add SimParticle and RecParticle view round-trips
+
+### Miscellaneous
+
+- Lint with prek via pixi
+- Enable Renovate via shared preset
+- Build and test via shared pixi workflow
+- Add concurrency control and scheduled lock updates
+
 ## [0.1.0] - 2026-06-19
 
 ### Features
